@@ -182,9 +182,9 @@ NTSTATUS Loaded(PVOID Paramater)
 
 	DbgPrintEx(0, 0, ("Process ID: ", (LPCSTR)ImageInformation->ProcessID));
 	DbgPrintEx(0, 0, ("ModuleBase: ", (LPCSTR)ImageInformation->ModuleBase64));
-	DbgPrintEx(0, 0, ("Handle Count:", (LPCSTR)ImageInformation->HandleCount));
-	DbgPrintEx(0, 0, ("Full Image Name:", ImageInformation->FullImageName));
-	DbgPrintEx(0, 0, ("Number of Threads:", (LPCSTR)ImageInformation->NumberOfThreads));
+	DbgPrintEx(0, 0, ("Handle Count: ", (LPCSTR)ImageInformation->HandleCount));
+	DbgPrintEx(0, 0, ("Full Image Name: ", ImageInformation->FullImageName));
+	DbgPrintEx(0, 0, ("Number of Threads: ", (LPCSTR)ImageInformation->NumberOfThreads));
 
 	delete ImageInformation;
 }
