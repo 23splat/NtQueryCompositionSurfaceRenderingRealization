@@ -3,7 +3,7 @@
 // Read 'Loaded' function before executing (Line 175)
 
 /* Haven't testing this, don't know if NtQueryCompositionSurfaceRenderingRealization causes BSOD. If it does, replace the second argument passed to 
-GET_EXPORTED_ROUTINE_ADDRESS (called on line 157) with NtQueryCompositionSurfaceStatistics or NtQueryCompositionSurfaceBinding */
+GET_EXPORTED_ROUTINE_ADDRESS (called on line 155) with NtQueryCompositionSurfaceStatistics or NtQueryCompositionSurfaceBinding */
 
 struct IMAGE_BASE_INFORMATION
 {
