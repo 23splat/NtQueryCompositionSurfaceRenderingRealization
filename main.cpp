@@ -1,5 +1,5 @@
 // Reboot system to unload driver
-// [OPT] Create your own Unlaod routine, pass PDRIVER_OBJECT as an object (can be a VOID routine)
+// [OPT] Create your own Unlaod routine, pass PDRIVER_OBJECT as an arg (can be a VOID routine)
 // Read 'Loaded' function before executing (Line 175)
 
 // Bad habit returning false in functions that return an NTSTATUS, please correct this to STATUS_UNSUCCESSFUL where you see 'false' based on the func return type
