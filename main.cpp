@@ -2,6 +2,8 @@
 // [OPT] Create your own Unlaod routine, pass PDRIVER_OBJECT as an object (can be a VOID routine)
 // Read 'Loaded' function before executing (Line 175)
 
+// Bad habit returning false in functions that return an NTSTATUS, please correct this to STATUS_UNSUCCESSFUL where you see 'false' based on the func return type
+
 /* Haven't testing this, don't know if NtQueryCompositionSurfaceRenderingRealization causes BSOD. If it does, replace the second argument passed to 
 GET_EXPORTED_ROUTINE_ADDRESS (called on line 155) with NtQueryCompositionSurfaceStatistics or NtQueryCompositionSurfaceBinding */
 
@@ -19,10 +21,10 @@ struct IMAGE_BASE_INFORMATION
 	NTSTATUS GET_IMAGE_INFORMATION(const char* ModuleName)
 	{
 		ULONG Bytes = 0;
-		if (!NT_SUCCESS(ZwQuerySystemInformation(SystemModuleInformation, NULL, NULL, &Bytes))) return false;
+		if (!NT_SUCCESS(ZwQuerySystemInformation(SystemModuleInformation, NULL, NULL, &Bytes))) return STATUS_UNSUCCESSFUL;
 		if (!Bytes) return false;
 		PRTL_PROCESS_MODULES Modules = (PRTL_PROCESS_MODULES)ExAllocatePoolWithTag(NonPagedPool, Bytes, 0x4e554c4c); // 'NULL'
-		if (!NT_SUCCESS(ZwQuerySystemInformation(SystemModuleInformation, Modules, Bytes, &Bytes))) return false;
+		if (!NT_SUCCESS(ZwQuerySystemInformation(SystemModuleInformation, Modules, Bytes, &Bytes))) return STATUS_UNSUCCESSFUL;
 		PRTL_PROCESS_MODULE_INFORMATION ModuleInformation = Modules->Modules;
 		for (int j = 0; j < Modules->NumberOfModules; j++)
 		{
