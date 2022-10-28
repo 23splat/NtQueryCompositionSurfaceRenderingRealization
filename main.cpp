@@ -177,7 +177,7 @@ NTSTATUS Loaded(PVOID Paramater)
 	IMAGE_BASE_INFORMATION* ImageInformation = new IMAGE_BASE_INFORMATION;
 	PEPROCESS Process = {};
 	if (!NT_SUCCESS(ImageInformation->GET_PROCESS_INFORMATION("Your Target Process Here"))) return STATUS_UNSUCCESSFUL;
-    if (!NT_SUCCESS(PsLookupProcessByProcessId(ImageInformation->ProcessID, &Process))) return STATUS_UNSUCCESSFUL;
+        if (!NT_SUCCESS(PsLookupProcessByProcessId(ImageInformation->ProcessID, &Process))) return STATUS_UNSUCCESSFUL;
 	if (!NT_SUCCESS(ImageInformation->GET_MODULE_BASE_x64(Process, "Your Target Module Here"))) return STATUS_UNSUCCESSFUL;
 
 	DbgPrintEx(0, 0, ("Process ID: ", (LPCSTR)ImageInformation->ProcessID));
